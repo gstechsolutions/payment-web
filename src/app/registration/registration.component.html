@@ -1,0 +1,43 @@
+<div class="register-container">
+    <form (ngSubmit)="onRegister()" #registerForm="ngForm" class="register-form">
+      <h2>Register</h2>
+  
+      <!-- Username Field -->
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="userName"
+        [(ngModel)]="userName"
+        required
+        placeholder="Enter your username"
+        
+      />
+      <div *ngIf="registerForm.submitted && !userName" class="error">
+        Username is required.
+      </div>
+  
+      <!-- Password Field -->
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        placeholder="Enter your password"
+      />
+      <div *ngIf="registerForm.submitted && !password" class="error">
+        Password is required.
+    </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="!registerForm.valid">Register</button>
+
+      <!-- Back to Login Link -->
+      <p>        
+        <a (click)="goToLogin()">Back to Login</a>
+    </p>
+    </form>
+  </div>
+  
